@@ -1,0 +1,43 @@
+/* Reset some default styles */
+body, h1, h2, p, ul, li {
+  margin: 0;
+  padding: 0;
+}
+
+/* Style the container */
+.container {
+  display: flex;
+  justify-content: space-between;
+  padding: 20px;
+}
+
+/* Style the left section */
+.left {
+  text-align: center;
+  background-color: rgb(135, 235, 173); 
+  color: azure; 
+  padding: 20px;
+}
+
+.left img {
+  width: 150px;
+  border-radius: 50%;
+}
+
+.role {
+  font-style: italic;
+}
+
+
+.right {
+  flex-grow: 1;
+  padding: 0 20px;
+}
+
+.section {
+  margin-bottom: 20px;
+  background-color: rgb(241, 255, 240); 
+  padding: 10px;
+  border-radius: 5px;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+}
