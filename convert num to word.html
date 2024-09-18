@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Num to Word Convert</title>
+    <style type="text/css">
+        body
+        {
+            background: rgb(2,0,36);
+background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(9,9,121,0.9051995798319328) 35%, rgba(0,212,255,1) 100%);
+        }
+        div
+        {
+            height: 30%;
+            width: 40%;
+            border: 2px solid black;
+            background-color: white;
+            position: absolute;
+            top: 32%;
+            left: 32%;
+            font-family: Cooper;
+        }
+        h1,b
+        {
+            margin: 20px;
+        }
+        #word
+        {
+            color: blue;
+        }
+
+    </style>
+</head>
+<body>
+    <div>
+    <h1> Number to Word Converter </h1>
+    <b> <big> Enter the Number: &nbsp; </big> </b>
+    <input type="text" id="num">  &nbsp;
+    <input type="submit" value="Convert" onclick="Number()"> <br><br>
+    <b> <big> In Words:   &nbsp; </big> </b>
+    <big> <b id='word'> </b> </big>
+    </div>
+     <script type="text/javascript">
+        function Number()
+        {
+           var n=document.getElementById('num').value
+           //console.log(n)
+           var units = ['', 'One', 'Two', 'Three', 'Four', 'Five', 'Six', 'Seven', 'Eight', 'Nine'];
+           var teens = ['Ten ','Eleven', 'Twelve', 'Thirteen', 'Fourteen', 'Fifteen', 'Sixteen', 'Seventeen', 'Eighteen', 'Nineteen'];
+           var tens = ['', 'Ten ', 'Twenty ', 'Thirty ', 'Forty ', 'Fifty ', 'Sixty ', 'Seventy ', 'Eighty ', 'Ninety '];
+           var s=n.toString()
+           var word=new Array()
+           if(s.length>3 || s.length==0)
+           {
+            word.push("Enter in Range(0-999)")
+             document.getElementById('word').innerText=word
+             return;
+           }
+           if(s.length==2)
+           {
+            s="0"+s
+           }
+           if(s.length==1)
+           {
+            s="00"+s
+           }
+           if(s.length==3)
+           {
+                var flag=0
+                for(var i=s.length;i>=0; i--)
+               {
+               
+                if(n==0)
+                {
+                    word.push("Zero")
+                    break;
+                }
+                if(i==2)
+                {
+                    if(parseInt(s[i-1])!=1)
+                    {
+                        word.push(units[parseInt(s[i])])
+                    }
+                    else
+                    {
+                         word.push(teens[parseInt(s[i])])
+                         flag=1
+                    }
+                   
+                }
+                if(i==1 && flag!=1)
+                {
+                    word.push(tens[parseInt(s[i])] )
+                }
+                if(i==0)
+                {
+                    if(parseInt(s[i])!=0)
+                    {
+                        word.push(units[parseInt(s[i])] + " hundered ")
+                    }
+                }
+                
+               }
+           }
+           
+           word=word.reverse()
+           word=word.join(" ")
+            console.log(word)
+            document.getElementById('word').innerText=word
+        }
+    </script>
+</body>
+</html>
