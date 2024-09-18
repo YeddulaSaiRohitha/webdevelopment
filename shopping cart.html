@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shopping Cart Calculator</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            background-color: #f0f0f0;
+        }
+        .container {
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            max-width: 500px;
+            width: 100%;
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+        }
+        .form-group input[type="number"] {
+            width: 100%;
+            padding: 8px;
+            box-sizing: border-box;
+        }
+        .form-group button {
+            background-color: #007bff;
+            color: white;
+            padding: 10px;
+            border: none;
+            cursor: pointer;
+            width: 100%;
+        }
+        .form-group button:hover {
+            background-color: #0056b3;
+        }
+        .result {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>Shopping Cart Calculator</h1>
+    <div class="form-group">
+        <label for="price1">Price of Item 1:</label>
+        <input type="number" id="price1" name="price1" required>
+    </div>
+    <div class="form-group">
+        <label for="quantity1">Quantity of Item 1:</label>
+        <input type="number" id="quantity1" name="quantity1" required>
+    </div>
+    <div class="form-group">
+        <label for="price2">Price of Item 2:</label>
+        <input type="number" id="price2" name="price2" required>
+    </div>
+    <div class="form-group">
+        <label for="quantity2">Quantity of Item 2:</label>
+        <input type="number" id="quantity2" name="quantity2" required>
+    </div>
+    <div class="form-group">
+        <label for="price3">Price of Item 3:</label>
+        <input type="number" id="price3" name="price3" required>
+    </div>
+    <div class="form-group">
+        <label for="quantity3">Quantity of Item 3:</label>
+        <input type="number" id="quantity3" name="quantity3" required>
+    </div>
+    <div class="form-group">
+        <button type="button" onclick="calculateTotal()">Calculate Total</button>
+    </div>
+    <div class="result" id="result"></div>
+</div>
+
+<script>
+    function calculateTotal() {
+        const price1 = parseFloat(document.getElementById('price1').value);
+        const quantity1 = parseInt(document.getElementById('quantity1').value);
+        const price2 = parseFloat(document.getElementById('price2').value);
+        const quantity2 = parseInt(document.getElementById('quantity2').value);
+        const price3 = parseFloat(document.getElementById('price3').value);
+        const quantity3 = parseInt(document.getElementById('quantity3').value);
+
+        const subtotal1 = price1 * quantity1;
+        const subtotal2 = price2 * quantity2;
+        const subtotal3 = price3 * quantity3;
+
+        const taxRate = 0.08;
+        const total = (subtotal1 + subtotal2 + subtotal3) * (1 + taxRate);
+
+        document.getElementById('result').innerHTML = `
+            <p>Subtotal for Item 1: $${subtotal1.toFixed(2)}</p>
+            <p>Subtotal for Item 2: $${subtotal2.toFixed(2)}</p>
+            <p>Subtotal for Item 3: $${subtotal3.toFixed(2)}</p>
+            <p><strong>Total Cost (including tax): $${total.toFixed(2)}</strong></p>
+        `;
+    }
+</script>
+
+</body>
+</html>
